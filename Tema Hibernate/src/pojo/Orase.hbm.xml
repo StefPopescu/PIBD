@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="pojo.Orase" table="orase" catalog="tema"
+		optimistic-lock="version">
+		<id name="idoras" type="java.lang.Integer">
+			<column name="idoras" />
+			<generator class="identity" />
+		</id>
+		<property name="nume" type="string">
+			<column name="Nume" length="45" />
+		</property>	
+		<set name="teatre" table="teatre" inverse="true"
+			lazy="true" fetch="select">
+			<key>
+				<column name="idoras" />
+			</key>
+			<one-to-many class="pojo.Teatre" />
+		</set>
+	</class>
+</hibernate-mapping>

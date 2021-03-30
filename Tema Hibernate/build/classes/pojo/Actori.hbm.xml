@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="pojo.Actori" table="actori"
+		catalog="tema" optimistic-lock="version">
+		<id name="idactor" type="java.lang.Integer">
+			<column name="idactor" />
+			<generator class="identity" />
+		</id>
+		<many-to-one name="teatre" class="pojo.Teatre"
+			fetch="select">
+			<column name="idteatru" />
+		</many-to-one>		
+		<property name="nume" type="string">
+			<column name="Nume" length="45" />
+		</property>
+		<property name="prenume" type="string">
+			<column name="Prenume" length="45" />
+		</property>
+		<property name="salariu" type="integer">
+			<column name="Salariu" length="45" />
+		</property>
+	</class>
+</hibernate-mapping>

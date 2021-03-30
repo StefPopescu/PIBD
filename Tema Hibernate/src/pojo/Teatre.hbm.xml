@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="pojo.Teatre" table="teatre"
+		catalog="tema" optimistic-lock="version">
+		<id name="idteatru" type="java.lang.Integer">
+			<column name="idteatru" />
+			<generator class="identity" />
+		</id>
+		<many-to-one name="orase" class="pojo.Orase"
+			fetch="select">
+			<column name="idoras" />
+		</many-to-one>		
+		<property name="nume" type="string">
+			<column name="Nume" length="45" />
+		</property>
+		<property name="adresa" type="string">
+			<column name="Adresa" length="45" />
+		</property>
+		<property name="capacitate" type="integer">
+			<column name="Capacitate" length="45" />
+		</property>
+		<set name="actori" table="actori" inverse="true"
+			lazy="true" fetch="select">
+			<key>
+				<column name="idteatru" />
+			</key>
+			<one-to-many class="pojo.Actori" />
+		</set>
+	</class>
+</hibernate-mapping>
